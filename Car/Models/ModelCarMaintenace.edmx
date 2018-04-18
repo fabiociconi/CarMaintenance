@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarMaintenaceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CarBrands">
+          <Key>
+            <PropertyRef Name="CarBrandId" />
+          </Key>
+          <Property Name="CarBrandId" Type="int" Nullable="false" />
+          <Property Name="CarBrand1" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CarModels">
+          <Key>
+            <PropertyRef Name="CarModelId" />
+          </Key>
+          <Property Name="CarModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarModel1" Type="nchar" MaxLength="10" />
+          <Property Name="CarBrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="MaintenanceTips">
+          <Key>
+            <PropertyRef Name="maintId" />
+          </Key>
+          <Property Name="maintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="km" Type="int" />
+          <Property Name="carbrandId" Type="int" />
+          <Property Name="tip" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Regis">
+          <Key>
+            <PropertyRef Name="cb" />
+          </Key>
+          <Property Name="cb" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="cm" Type="nchar" MaxLength="10" />
+          <Property Name="cy" Type="nchar" MaxLength="10" />
+          <Property Name="m" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="CarMaintenaceModelStoreContainer">
+          <EntitySet Name="CarBrands" EntityType="Self.CarBrands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaintenanceTips" EntityType="Self.MaintenanceTips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regis" EntityType="Self.Regis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarMaintenaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CarBrand">
+          <Key>
+            <PropertyRef Name="CarBrandId" />
+          </Key>
+          <Property Name="CarBrandId" Type="Int32" Nullable="false" />
+          <Property Name="CarBrand1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CarModel">
+          <Key>
+            <PropertyRef Name="CarModelId" />
+          </Key>
+          <Property Name="CarModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarModel1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CarBrandId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MaintenanceTip">
+          <Key>
+            <PropertyRef Name="maintId" />
+          </Key>
+          <Property Name="maintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="km" Type="Int32" />
+          <Property Name="carbrandId" Type="Int32" />
+          <Property Name="tip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Regi">
+          <Key>
+            <PropertyRef Name="cb" />
+          </Key>
+          <Property Name="cb" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="cm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="m" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="DefaultConection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarBrands" EntityType="Self.CarBrand" />
+          <EntitySet Name="CarModels" EntityType="Self.CarModel" />
+          <EntitySet Name="MaintenanceTips" EntityType="Self.MaintenanceTip" />
+          <EntitySet Name="Regis" EntityType="Self.Regi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarMaintenaceModelStoreContainer" CdmEntityContainer="DefaultConection">
+          <EntitySetMapping Name="CarBrands">
+            <EntityTypeMapping TypeName="CarMaintenaceModel.CarBrand">
+              <MappingFragment StoreEntitySet="CarBrands">
+                <ScalarProperty Name="CarBrandId" ColumnName="CarBrandId" />
+                <ScalarProperty Name="CarBrand1" ColumnName="CarBrand1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarModels">
+            <EntityTypeMapping TypeName="CarMaintenaceModel.CarModel">
+              <MappingFragment StoreEntitySet="CarModels">
+                <ScalarProperty Name="CarModelId" ColumnName="CarModelId" />
+                <ScalarProperty Name="CarModel1" ColumnName="CarModel1" />
+                <ScalarProperty Name="CarBrandId" ColumnName="CarBrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceTips">
+            <EntityTypeMapping TypeName="CarMaintenaceModel.MaintenanceTip">
+              <MappingFragment StoreEntitySet="MaintenanceTips">
+                <ScalarProperty Name="maintId" ColumnName="maintId" />
+                <ScalarProperty Name="km" ColumnName="km" />
+                <ScalarProperty Name="carbrandId" ColumnName="carbrandId" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regis">
+            <EntityTypeMapping TypeName="CarMaintenaceModel.Regi">
+              <MappingFragment StoreEntitySet="Regis">
+                <ScalarProperty Name="cb" ColumnName="cb" />
+                <ScalarProperty Name="cm" ColumnName="cm" />
+                <ScalarProperty Name="cy" ColumnName="cy" />
+                <ScalarProperty Name="m" ColumnName="m" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CarMaintenaceModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

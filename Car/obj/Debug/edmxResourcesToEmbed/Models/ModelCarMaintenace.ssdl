@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarMaintenaceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CarBrands">
+    <Key>
+      <PropertyRef Name="CarBrandId" />
+    </Key>
+    <Property Name="CarBrandId" Type="int" Nullable="false" />
+    <Property Name="CarBrand1" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CarModels">
+    <Key>
+      <PropertyRef Name="CarModelId" />
+    </Key>
+    <Property Name="CarModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarModel1" Type="nchar" MaxLength="10" />
+    <Property Name="CarBrandId" Type="int" />
+  </EntityType>
+  <EntityType Name="MaintenanceTips">
+    <Key>
+      <PropertyRef Name="maintId" />
+    </Key>
+    <Property Name="maintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="km" Type="int" />
+    <Property Name="carbrandId" Type="int" />
+    <Property Name="tip" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Regis">
+    <Key>
+      <PropertyRef Name="cb" />
+    </Key>
+    <Property Name="cb" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="cm" Type="nchar" MaxLength="10" />
+    <Property Name="cy" Type="nchar" MaxLength="10" />
+    <Property Name="m" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityContainer Name="CarMaintenaceModelStoreContainer">
+    <EntitySet Name="CarBrands" EntityType="Self.CarBrands" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarModels" EntityType="Self.CarModels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaintenanceTips" EntityType="Self.MaintenanceTips" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regis" EntityType="Self.Regis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿body {
+	font-family: Arial;
+	font-size: 10pt;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	/*box-shadow: 4px 4px 4px;*/
+	padding: 3px;
+	width: 1000px;
+	opacity: 0.9;
+	/*background-image: url('../Images/wood-metallic-texture-background-rustic-banner-blue-tones-51204566.jpg');*/
+}
+.btn btn-secondary dropdown-toggle {
+	margin-right: 5px;
+}
+.auto-style3 {
+	width: 100%;
+	max-width: 1140px;
+	min-width: 992px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+input {
+	width: 200px;
+	padding: 5px 6px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	box-shadow: 0 2px #999;
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 5px;
+}
+
+/*table {
+	border: 1px solid #ccc;
+	height: 313px;
+	width: 562px;
+	padding: 5px 5px;
+	font-size: 13px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: black;
+	background-color: azure;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 2px #999;
+}*/
+
+	/*table th {
+		background-color: #F7F7F7;
+		color: #333;
+		font-weight: bold;
+	}
+
+	table th, table td {
+		padding: 5px;
+		border-color: black;
+		text-align: center;
+		border-width: thick;
+	}*/
+
+div {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.auto-style1 {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.auto-style2 {
+	width: 293px;
+	height: 145px;
+	margin-left: 11px;
+}

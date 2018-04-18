@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarMaintenaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CarBrand">
+    <Key>
+      <PropertyRef Name="CarBrandId" />
+    </Key>
+    <Property Name="CarBrandId" Type="Int32" Nullable="false" />
+    <Property Name="CarBrand1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CarModel">
+    <Key>
+      <PropertyRef Name="CarModelId" />
+    </Key>
+    <Property Name="CarModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarModel1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CarBrandId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MaintenanceTip">
+    <Key>
+      <PropertyRef Name="maintId" />
+    </Key>
+    <Property Name="maintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="km" Type="Int32" />
+    <Property Name="carbrandId" Type="Int32" />
+    <Property Name="tip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Regi">
+    <Key>
+      <PropertyRef Name="cb" />
+    </Key>
+    <Property Name="cb" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cm" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="cy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="m" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="DefaultConection" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CarBrands" EntityType="Self.CarBrand" />
+    <EntitySet Name="CarModels" EntityType="Self.CarModel" />
+    <EntitySet Name="MaintenanceTips" EntityType="Self.MaintenanceTip" />
+    <EntitySet Name="Regis" EntityType="Self.Regi" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+  </EntityContainer>
+</Schema>
